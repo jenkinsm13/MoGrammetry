@@ -11,7 +11,7 @@ import open3d as o3d
 from tqdm import tqdm
 import json
 
-from moge.model import MoGeModel
+from moge.model import import_model_class_by_version
 
 from .config import MoGrammetryConfig
 from .colmap_parser import COLMAPParser, Camera, Image
@@ -48,6 +48,7 @@ class MoGrammetryPipeline:
 
         # Load MoGe model
         self.progress_logger.start_task("Loading MoGe model")
+        MoGeModel = import_model_class_by_version(config.model_version)
         self.moge_model = MoGeModel.from_pretrained(config.model_name).to(self.device).eval()
         self.progress_logger.end_task("Loading MoGe model")
 

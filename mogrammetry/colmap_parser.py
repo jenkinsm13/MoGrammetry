@@ -258,7 +258,7 @@ class COLMAPParser:
                 for j in range(0, len(points_line), 3):
                     if j + 2 < len(points_line):
                         x, y = float(points_line[j]), float(points_line[j + 1])
-                        p3d_id = int(points_line[j + 2])
+                        p3d_id = int(float(points_line[j + 2]))
                         point2D_data.append([x, y])
                         point3D_ids.append(p3d_id)
 
