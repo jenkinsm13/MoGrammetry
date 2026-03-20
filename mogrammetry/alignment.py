@@ -8,7 +8,6 @@ to recover absolute scale from affine-invariant point maps.
 from typing import Tuple, Optional, Dict
 import numpy as np
 from scipy.optimize import least_squares, minimize
-import cv2
 
 
 class AlignmentSolver:

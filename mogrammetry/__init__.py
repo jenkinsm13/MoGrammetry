@@ -16,7 +16,16 @@ Main components:
 __version__ = "1.0.0"
 __author__ = "MoGrammetry Contributors"
 
-from .pipeline import MoGrammetryPipeline
+# Lazy imports to avoid pulling in heavy dependencies (torch, open3d) at package import time.
+# This allows lightweight modules (config, colmap_parser, logger) to be imported independently.
 from .config import MoGrammetryConfig
+
+
+def __getattr__(name):
+    if name == 'MoGrammetryPipeline':
+        from .pipeline import MoGrammetryPipeline
+        return MoGrammetryPipeline
+    raise AttributeError(f"module 'mogrammetry' has no attribute {name!r}")
+
 
 __all__ = ['MoGrammetryPipeline', 'MoGrammetryConfig']

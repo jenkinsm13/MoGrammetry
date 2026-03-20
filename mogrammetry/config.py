@@ -87,7 +87,8 @@ class MoGrammetryConfig:
     colmap_model_path: Optional[str] = None
     image_dir: Optional[str] = None
     output_dir: str = './output'
-    model_name: str = 'Ruicheng/moge-vitl'
+    model_name: str = 'Ruicheng/moge-2-vitl-normal'
+    model_version: Literal['v1', 'v2'] = 'v2'
 
     # Sub-configurations
     alignment: AlignmentConfig = field(default_factory=AlignmentConfig)
